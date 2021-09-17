@@ -1,4 +1,4 @@
-body{
+.InputMenu{
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -41,6 +41,7 @@ form .booking .input-box{
 form .button{
     height: 45px;
     margin: 45px 0;
+    margin-left: 185px;
 }
 
 form .button input{
