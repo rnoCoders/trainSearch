@@ -33,7 +33,11 @@ public class TrainSearchService {
                     if (trainDetailSingle.get(j).getStation_name().contains(searchCriteria.getFrom())) {
                         for (TrainSearch traindetailsingle : trainDetailSingle) {
                             if (traindetailsingle.getStation_name().contains(searchCriteria.getTo())) {
-                                trainNo.add(traindetailsingle.getTrain_no());
+                                int toSeq = Integer.parseInt(traindetailsingle.getSeq());
+                                int fromSeq = Integer.parseInt(trainDetailSingle.get(j).getSeq());
+                                if(toSeq > fromSeq){
+                                    trainNo.add(traindetailsingle.getTrain_no());
+                                }
                             }
                         }
                     }
