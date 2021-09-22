@@ -2,8 +2,10 @@ package com.rnocoders.trainticketing.controller;
 
 import com.rnocoders.trainticketing.entity.TrainSearch;
 import com.rnocoders.trainticketing.entity.TrainSearchCriteria;
+import com.rnocoders.trainticketing.repo.TrainSearchRepository;
 import com.rnocoders.trainticketing.service.TrainSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +18,8 @@ import java.util.stream.Collectors;
 public class TrainSearchController {
     @Autowired
     private TrainSearchService serv;
+    @Autowired
+    private TrainSearchRepository repo;
 
     @PostMapping("/trainSearch")
     public List<TrainSearch> trainSearchList(TrainSearchCriteria searchCriteria){
@@ -31,6 +35,11 @@ public class TrainSearchController {
         }
 
         return (ArrayList<String>) trainNumbers.stream().distinct().collect(Collectors.toList());
+    }
+
+    @GetMapping("/stationNames")
+    public List<String> getStationNames(){
+        return repo.stationNames();
     }
 
 }

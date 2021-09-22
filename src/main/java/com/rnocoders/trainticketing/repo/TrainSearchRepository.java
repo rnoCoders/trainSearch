@@ -10,4 +10,7 @@ public interface TrainSearchRepository extends JpaRepository<TrainSearch, String
 
     @Query(value = "SELECT * FROM train_data where train_no = ?1", nativeQuery = true)
     List<TrainSearch> findByTrain_no(String uniqueTrainNum);
+
+    @Query(value = "SELECT DISTINCT station_name FROM train_data", nativeQuery = true)
+    List<String> stationNames();
 }
